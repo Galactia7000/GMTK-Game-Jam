@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dus1cut2vn8y"]
+
+[ext_resource type="Script" path="res://Scripts/StartPlatform.cs" id="1_01rj3"]
+[ext_resource type="Texture2D" uid="uid://cx5bb2w3g7y7m" path="res://icon.svg" id="1_wbkbu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2t1xk"]
+size = Vector2(130, 124)
+
+[node name="StartPlatform" type="StaticBody2D"]
+scale = Vector2(0.2, 0.2)
+collision_layer = 2
+script = ExtResource("1_01rj3")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2t1xk")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+texture = ExtResource("1_wbkbu")

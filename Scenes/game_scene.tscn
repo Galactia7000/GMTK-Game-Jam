@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://mgfcxud4i4nj"]
+
+[ext_resource type="PackedScene" uid="uid://blle5rduhiawb" path="res://Scenes/player.tscn" id="1_uoffo"]
+[ext_resource type="Script" path="res://Scripts/GameLogic.cs" id="1_wcb78"]
+[ext_resource type="PackedScene" uid="uid://ytcxtanmtw0g" path="res://Scenes/note.tscn" id="2_bj77t"]
+[ext_resource type="PackedScene" uid="uid://dus1cut2vn8y" path="res://Scenes/start_platform.tscn" id="4_63ud3"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_o03uw"]
+
+[node name="GameScene" type="Node2D" node_paths=PackedStringArray("NoteSpawner")]
+script = ExtResource("1_wcb78")
+NoteSpawner = NodePath("NoteSpawner")
+Note = ExtResource("2_bj77t")
+SpawnTime = 1.5
+
+[node name="Player" parent="." instance=ExtResource("1_uoffo")]
+position = Vector2(99, 144)
+JumpVelocity = 500
+JumpMultiplier = 0.05
+MaxJumpTime = 10.0
+FallMultiplier = 2.0
+
+[node name="NoteSpawner" type="Marker2D" parent="."]
+position = Vector2(571, 157)
+
+[node name="Notes" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="TrackEnd" type="Area2D" parent="."]
+position = Vector2(1, 214)
+collision_layer = 4
+collision_mask = 2
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrackEnd"]
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_o03uw")
+
+[node name="Killzone" type="Area2D" parent="."]
+position = Vector2(104, 324)
+collision_layer = 4
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+shape = SubResource("WorldBoundaryShape2D_o03uw")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(289, 162)
+zoom = Vector2(2, 2)
+metadata/_edit_lock_ = true
+
+[node name="StartPlatform" parent="." instance=ExtResource("4_63ud3")]
+position = Vector2(101, 193)

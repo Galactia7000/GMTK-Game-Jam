@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://ytcxtanmtw0g"]
+
+[ext_resource type="Texture2D" uid="uid://cx5bb2w3g7y7m" path="res://icon.svg" id="1_pciya"]
+[ext_resource type="Script" path="res://Scripts/NoteMovement.cs" id="1_w6el0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y24wt"]
+size = Vector2(126, 128)
+
+[node name="Note" type="CharacterBody2D"]
+scale = Vector2(0.2, 0.2)
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_w6el0")
+Speed = 4000.0
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_y24wt")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+modulate = Color(1, 0.733333, 0, 1)
+texture = ExtResource("1_pciya")
