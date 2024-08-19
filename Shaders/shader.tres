@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://1xnoeluyerc1"]
+
+[ext_resource type="Shader" path="res://Shaders/backgroundShader.gdshader" id="1_rmw7f"]
+
+[resource]
+shader = ExtResource("1_rmw7f")
+shader_parameter/elapsedTime = null

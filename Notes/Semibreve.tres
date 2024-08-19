@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Note" load_steps=5 format=3 uid="uid://fsugdbs8ov3a"]
+
+[ext_resource type="Texture2D" uid="uid://cgnoivwypndep" path="res://Assets/Art/Notes/Semibreve.png" id="1_isods"]
+[ext_resource type="Script" path="res://Scripts/Note.cs" id="1_yib34"]
+[ext_resource type="AudioStream" uid="uid://dd4jxpgxbrc6o" path="res://Assets/SFX/Long.wav" id="1_ym1r2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nvfxn"]
+size = Vector2(95.0002, 65.0001)
+
+[resource]
+script = ExtResource("1_yib34")
+Symbol = "o"
+Texture = ExtResource("1_isods")
+Sound = ExtResource("1_ym1r2")
+Collision = SubResource("RectangleShape2D_nvfxn")
+SpriteOffset = Vector2(0, 0)

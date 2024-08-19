@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Note" load_steps=5 format=3 uid="uid://chvthmiwroo3l"]
+
+[ext_resource type="Texture2D" uid="uid://c41np4xoaw52n" path="res://Assets/Art/Notes/Single Quaver.png" id="1_ltodi"]
+[ext_resource type="Script" path="res://Scripts/Note.cs" id="1_ppvep"]
+[ext_resource type="AudioStream" uid="uid://cxgub1nx4asom" path="res://Assets/SFX/Quick.wav" id="1_u8vcw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7kowx"]
+size = Vector2(47.5001, 32.5001)
+
+[resource]
+script = ExtResource("1_ppvep")
+Symbol = "J"
+Texture = ExtResource("1_ltodi")
+Sound = ExtResource("1_u8vcw")
+Collision = SubResource("RectangleShape2D_7kowx")
+SpriteOffset = Vector2(15, -30)
