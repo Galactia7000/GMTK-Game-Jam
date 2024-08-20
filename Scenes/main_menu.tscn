@@ -1,0 +1,146 @@
+[gd_scene load_steps=11 format=3 uid="uid://cftl8mrd8wyxi"]
+
+[ext_resource type="Script" path="res://Scripts/MainMenu.cs" id="1_hirlv"]
+[ext_resource type="Texture2D" uid="uid://dfi4yvd247gdw" path="res://Assets/Art/GameLogo.png" id="1_rcj6p"]
+[ext_resource type="Material" uid="uid://dfu8r7ntsrpwy" path="res://Shaders/UIRainbow.tres" id="2_1i474"]
+[ext_resource type="Texture2D" uid="uid://c6oglrsa5yv7i" path="res://Assets/Art/SongsBtn.png" id="2_yojhn"]
+[ext_resource type="Shader" path="res://Shaders/UIRainbow.gdshader" id="2_yoobx"]
+[ext_resource type="FontFile" uid="uid://c6cqtkykb6epr" path="res://Assets/karmatic-arcade.regular.ttf" id="3_u5ckc"]
+[ext_resource type="Texture2D" uid="uid://lcyckqw2b01p" path="res://Assets/Art/SettingsBtn.png" id="4_gcett"]
+[ext_resource type="Texture2D" uid="uid://70ohy0oeiwjx" path="res://Assets/Art/ControlsBtn.png" id="5_tjfcw"]
+[ext_resource type="Texture2D" uid="uid://buhci4cw1bhsb" path="res://Assets/Art/QuitBtn.png" id="6_2w2er"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rw7fx"]
+font = ExtResource("3_u5ckc")
+font_size = 20
+
+[node name="MainMenu" type="CanvasLayer" node_paths=PackedStringArray("Buttons", "Textures", "Labels")]
+script = ExtResource("1_hirlv")
+Buttons = [NodePath("Buttons/VBoxContainer/Songs"), NodePath("Buttons/VBoxContainer/Settings"), NodePath("Buttons/VBoxContainer/Help"), NodePath("Buttons/VBoxContainer/Quit")]
+Textures = [NodePath("Buttons/VBoxContainer/Songs/Btn"), NodePath("Buttons/VBoxContainer/Settings/Btn"), NodePath("Buttons/VBoxContainer/Help/Btn"), NodePath("Buttons/VBoxContainer/Quit/Btn")]
+Labels = [NodePath("Buttons/VBoxContainer/Songs/Lbl"), NodePath("Buttons/VBoxContainer/Settings/Lbl"), NodePath("Buttons/VBoxContainer/Help/Lbl"), NodePath("Buttons/VBoxContainer/Quit/Lbl")]
+HoveringShader = ExtResource("2_yoobx")
+
+[node name="Logo" type="Control" parent="."]
+layout_mode = 3
+anchor_left = 0.2
+anchor_top = 0.1
+anchor_right = 0.8
+anchor_bottom = 0.25
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="LogoContainer" type="VBoxContainer" parent="Logo"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -72.0
+offset_right = 72.0
+offset_bottom = 42.0
+grow_horizontal = 2
+
+[node name="Logo" type="TextureRect" parent="Logo/LogoContainer"]
+material = ExtResource("2_1i474")
+custom_minimum_size = Vector2(720, 210)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+texture = ExtResource("1_rcj6p")
+expand_mode = 1
+
+[node name="Buttons" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Buttons"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -229.0
+offset_right = 229.0
+offset_bottom = 188.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="Songs" type="HBoxContainer" parent="Buttons/VBoxContainer"]
+material = ExtResource("2_1i474")
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_stretch_ratio = 0.0
+
+[node name="Btn" type="TextureButton" parent="Buttons/VBoxContainer/Songs"]
+material = ExtResource("2_1i474")
+layout_mode = 2
+texture_normal = ExtResource("2_yojhn")
+
+[node name="Lbl" type="Label" parent="Buttons/VBoxContainer/Songs"]
+material = ExtResource("2_1i474")
+layout_mode = 2
+text = "SONGS"
+label_settings = SubResource("LabelSettings_rw7fx")
+
+[node name="Settings" type="HBoxContainer" parent="Buttons/VBoxContainer"]
+material = ExtResource("2_1i474")
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Btn" type="TextureButton" parent="Buttons/VBoxContainer/Settings"]
+material = ExtResource("2_1i474")
+layout_mode = 2
+texture_normal = ExtResource("4_gcett")
+
+[node name="Lbl" type="Label" parent="Buttons/VBoxContainer/Settings"]
+material = ExtResource("2_1i474")
+layout_mode = 2
+text = "SETTINGS"
+label_settings = SubResource("LabelSettings_rw7fx")
+
+[node name="Help" type="HBoxContainer" parent="Buttons/VBoxContainer"]
+material = ExtResource("2_1i474")
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Btn" type="TextureButton" parent="Buttons/VBoxContainer/Help"]
+material = ExtResource("2_1i474")
+layout_mode = 2
+texture_normal = ExtResource("5_tjfcw")
+
+[node name="Lbl" type="Label" parent="Buttons/VBoxContainer/Help"]
+material = ExtResource("2_1i474")
+layout_mode = 2
+text = "controls
+"
+label_settings = SubResource("LabelSettings_rw7fx")
+
+[node name="Quit" type="HBoxContainer" parent="Buttons/VBoxContainer"]
+material = ExtResource("2_1i474")
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Btn" type="TextureButton" parent="Buttons/VBoxContainer/Quit"]
+material = ExtResource("2_1i474")
+layout_mode = 2
+texture_normal = ExtResource("6_2w2er")
+
+[node name="Lbl" type="Label" parent="Buttons/VBoxContainer/Quit"]
+material = ExtResource("2_1i474")
+layout_mode = 2
+text = "QUIT
+"
+label_settings = SubResource("LabelSettings_rw7fx")

@@ -6,6 +6,7 @@ public partial class PlayerMovement : CharacterBody2D
     [Signal] public delegate void PlayerJumpEventHandler(float strength);
     [Export] public AnimationTree AnimTree;
     [Export] public Sprite2D Sprite;
+    [Export] public CpuParticles2D JumpParticles;
 
     [ExportGroup("Jumping")]
     [Export] public int JumpVelocity = 400;
@@ -38,6 +39,7 @@ public partial class PlayerMovement : CharacterBody2D
                 velocity.Y = -JumpVelocity;
                 EmitSignal("PlayerJump", 2f);
                 animState.Travel("Jump");
+                JumpParticles.Emitting = true;
                 coyoteTimer = CoyoteJumpTime;
                 canDoubleJump = true;
                 midJump = true;
@@ -47,6 +49,7 @@ public partial class PlayerMovement : CharacterBody2D
                 velocity.Y = -JumpVelocity;
                 EmitSignal("PlayerJump", 2f);
                 animState.Travel("Midair Jump");
+                JumpParticles.Emitting = true;
                 canDoubleJump = false;
             }
         }
@@ -77,6 +80,6 @@ public partial class PlayerMovement : CharacterBody2D
         MoveAndSlide();
         Position = new Vector2(xPos, Position.Y);
         rgbTimer += (float)delta/4f;
-        Sprite.Modulate = Color.FromHsv(rgbTimer % 1, 1, 1);
+        Modulate = Color.FromHsv(rgbTimer % 1, 1, 1);
     }
 }

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Note" load_steps=5 format=3 uid="uid://0qwj24b7op58"]
+
+[ext_resource type="Script" path="res://Scripts/Note.cs" id="1_ibicf"]
+[ext_resource type="Texture2D" uid="uid://ub8h6ed7g3m1" path="res://Assets/Art/Notes/Beam Semiquaver.png" id="1_jfu3v"]
+[ext_resource type="AudioStream" uid="uid://51qonhmjrphk" path="res://Assets/SFX/Trumpet.wav" id="1_yasla"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5eet3"]
+size = Vector2(200.001, 102.5)
+
+[resource]
+script = ExtResource("1_ibicf")
+Symbol = "m"
+Texture = ExtResource("1_jfu3v")
+Sound = ExtResource("1_yasla")
+Collision = SubResource("RectangleShape2D_5eet3")
+SpriteOffset = Vector2(-20, 5)

@@ -5,28 +5,37 @@ uniform float songDuration;
 
 vec3 HSVtoRGB(float hue, float saturation, float vibrance)
 {
-	vec3 rgb;
-	float chroma = saturation * vibrance;
-	float Min = vibrance - chroma;
-	float hue2;
-	if (hue >= 360.0) hue2 = (hue - 360.0)/60.0;
-	else hue2 = hue/60.0;
-	if (hue2 >= -1.0 && hue2 <= 1.0)
+	int hi = int(hue / 60.0) % 6;
+	float f = float(hue / 60.0 - float(int(hue / 60.0)));
+	vibrance *= 255.0;
+	float v = vibrance;
+	float p = vibrance * (1.0 - saturation);
+	float q = vibrance * (1.0 - f * saturation);
+	float t = vibrance * (1.0 - (1.0 - f) * saturation);
+	if (hi == 0) 
 	{
-		if (hue2 < 0.0) rgb = vec3(vibrance,Min, Min - hue2 * chroma);
-		else rgb = vec3(vibrance, Min + hue2 * chroma, Min);
+		return vec3(v / 255.0, t / 255.0 ,p / 255.0);
 	}
-	else if (hue2 >= 1.0 && hue2 <= 3.0)
+	else if (hi == 1) 
 	{
-		if (hue2 < 2.0) rgb = vec3(Min - (hue2 - 2.0) * chroma, vibrance, Min);
-		else rgb = vec3(Min, vibrance, Min + (hue2 - 2.0) * chroma );
+		return vec3(q / 255.0, v / 255.0 ,p / 255.0);
+	}
+	else if (hi == 2) 
+	{
+		return vec3(p / 255.0, v / 255.0 ,t / 255.0);
+	}
+	else if (hi == 3) 
+	{
+		return vec3(p / 255.0, q / 255.0 ,v / 255.0);
+	}
+	else if (hi == 4) 
+	{
+		return vec3(t / 255.0, p / 255.0 ,v / 255.0);
 	}
 	else
 	{
-		if (hue2 < 4.0) rgb = vec3(Min, Min - (hue2 - 4.0) * chroma, vibrance);
-		else rgb = vec3(Min + (hue2 - 4.0) * chroma, Min, vibrance);
+		return vec3(v / 255.0, p / 255.0 ,q / 255.0);
 	}
-	return rgb;
 }
 
 void fragment() 

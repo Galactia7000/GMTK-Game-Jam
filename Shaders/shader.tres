@@ -5,3 +5,4 @@
 [resource]
 shader = ExtResource("1_rmw7f")
 shader_parameter/elapsedTime = null
+shader_parameter/songDuration = null

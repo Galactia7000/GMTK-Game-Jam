@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Note" load_steps=5 format=3 uid="uid://d2cjoeggl2dew"]
+
+[ext_resource type="Script" path="res://Scripts/Note.cs" id="1_ekpsa"]
+[ext_resource type="AudioStream" uid="uid://ddnsoef3swcum" path="res://Assets/SFX/DrumReverb.wav" id="1_rl372"]
+[ext_resource type="Texture2D" uid="uid://ceqqms8j67dmv" path="res://Assets/Art/Notes/Halfnote.png" id="2_gqdju"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_umkju"]
+size = Vector2(45.0002, 30.0001)
+
+[resource]
+script = ExtResource("1_ekpsa")
+Symbol = "d"
+Texture = ExtResource("2_gqdju")
+Sound = ExtResource("1_rl372")
+Collision = SubResource("RectangleShape2D_umkju")
+SpriteOffset = Vector2(0, -30)

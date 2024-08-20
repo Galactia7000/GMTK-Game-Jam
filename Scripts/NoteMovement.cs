@@ -16,7 +16,7 @@ public partial class NoteMovement : CharacterBody2D
 		Velocity = direction * Speed * (float)delta;
 		MoveAndSlide();
 		Position = new Vector2(Position.X, yPos);
-		GetNode<Sprite2D>("Sprite").Modulate = Color.FromHsv(Position.X / 577, 1, 0.75F);
+		GetNode<Sprite2D>("Sprite").Modulate = Color.FromHsv(Position.X / (577 + 60), 1, 0.75F);
 	}
 	public void SetNote(Note thisNote, float pitch)
 	{
@@ -25,7 +25,7 @@ public partial class NoteMovement : CharacterBody2D
 		sprite.Position = thisNote.SpriteOffset;
 		sound = thisNote.Sound;
 		if(pitch > 0) pitchShift = pitch;
-		else pitchShift = 0.1f;
+		else pitchShift = 0.2f;
 		GetNode<CollisionShape2D>("Collider").Shape = thisNote.Collision;
 	}
 	public async void Play()

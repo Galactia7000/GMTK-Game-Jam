@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://ytcxtanmtw0g"]
 
 [ext_resource type="Script" path="res://Scripts/NoteMovement.cs" id="1_w6el0"]
-[ext_resource type="Texture2D" uid="uid://c41np4xoaw52n" path="res://Assets/Art/Notes/Single Quaver.png" id="2_1iqvi"]
-[ext_resource type="Texture2D" uid="uid://bqhaccyslxqeo" path="res://Assets/Art/Notes/Treble Cleff.png" id="3_kesab"]
+[ext_resource type="Texture2D" uid="uid://ub8h6ed7g3m1" path="res://Assets/Art/Notes/Beam Semiquaver.png" id="2_sb62x"]
+[ext_resource type="Texture2D" uid="uid://c0u63l51a1wyi" path="res://Assets/Art/Notes/Treble Cleff.png" id="3_kesab"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cn6yl"]
-size = Vector2(47.5001, 32.5001)
+size = Vector2(200.001, 102.5)
 
 [sub_resource type="Curve" id="Curve_31twa"]
 max_value = 5.0
@@ -30,13 +30,13 @@ script = ExtResource("1_w6el0")
 Speed = 5000.0
 
 [node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(15, -30)
+position = Vector2(-20, 5)
 scale = Vector2(8, 8)
-texture = ExtResource("2_1iqvi")
+texture = ExtResource("2_sb62x")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
-position = Vector2(-1.25, 1.25)
-scale = Vector2(0.999997, 0.999997)
+position = Vector2(-1.90735e-06, 1.25001)
+scale = Vector2(0.999995, 0.999995)
 shape = SubResource("RectangleShape2D_cn6yl")
 
 [node name="Particle" type="CPUParticles2D" parent="."]

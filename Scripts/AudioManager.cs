@@ -15,7 +15,7 @@ public partial class AudioManager : Node
     
     Queue<AudioStreamPlayer> availableChannels = new Queue<AudioStreamPlayer>();
     Queue<PitchedNote> audioToPlay = new Queue<PitchedNote>();
-    int numberOfChannels = 10;
+    int numberOfChannels = 12;
     public override void _Ready()
     {
         instance = this;

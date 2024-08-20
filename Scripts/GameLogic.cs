@@ -32,6 +32,7 @@ public partial class GameLogic : Node
         }
         songDuration = noteTracks[0].numberOfBeats * 60 / bpm;
         bgShader.SetShaderParameter("songDuration", songDuration);
+        reader.Close();
     }
     public override void _Process(double delta)
     {
@@ -58,7 +59,7 @@ public partial class GameLogic : Node
             foreach (Note note in NoteList) if(note.Symbol[0] == thisChar) thisNote = note;
             if(thisNote is null) return;
             NoteMovement thisNoteNode = NoteScene.Instantiate<NoteMovement>();
-            thisNoteNode.SetNote(thisNote, i / 3f);
+            thisNoteNode.SetNote(thisNote, i / 4f);
             thisNoteNode.GlobalPosition = NoteSpawner.GetChild<Marker2D>(noteTracks[i].TrackNumber).GlobalPosition;
             GetNode("Notes").AddChild(thisNoteNode);
         }

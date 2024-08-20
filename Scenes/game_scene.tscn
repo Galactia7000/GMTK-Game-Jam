@@ -1,15 +1,20 @@
-[gd_scene load_steps=12 format=3 uid="uid://mgfcxud4i4nj"]
+[gd_scene load_steps=17 format=3 uid="uid://mgfcxud4i4nj"]
 
 [ext_resource type="PackedScene" uid="uid://blle5rduhiawb" path="res://Scenes/player.tscn" id="1_uoffo"]
 [ext_resource type="Script" path="res://Scripts/GameLogic.cs" id="1_wcb78"]
 [ext_resource type="PackedScene" uid="uid://ytcxtanmtw0g" path="res://Scenes/note.tscn" id="2_bj77t"]
+[ext_resource type="Resource" uid="uid://bra40an84ebun" path="res://Notes/BassCleff.tres" id="3_j11fc"]
 [ext_resource type="Resource" uid="uid://fsugdbs8ov3a" path="res://Notes/Semibreve.tres" id="3_u62y3"]
 [ext_resource type="PackedScene" uid="uid://dus1cut2vn8y" path="res://Scenes/start_platform.tscn" id="4_63ud3"]
+[ext_resource type="Resource" uid="uid://crkg75g2mb7wn" path="res://Notes/DoubleQuaver.tres" id="4_jlufs"]
 [ext_resource type="Resource" uid="uid://chvthmiwroo3l" path="res://Notes/SingleQuaver.tres" id="4_lp1l0"]
 [ext_resource type="Material" uid="uid://1xnoeluyerc1" path="res://Shaders/shader.tres" id="5_m0r1t"]
-[ext_resource type="Texture2D" uid="uid://p32vtewhsw7" path="res://Assets/Art/Background.png" id="5_pcw83"]
+[ext_resource type="Resource" uid="uid://d2cjoeggl2dew" path="res://Notes/Half.tres" id="5_r8rk0"]
+[ext_resource type="Resource" uid="uid://0qwj24b7op58" path="res://Notes/MultipleQuavers.tres" id="6_5x55n"]
 [ext_resource type="Texture2D" uid="uid://3vi23jpwd0q5" path="res://Assets/Art/BackgroundTracks.png" id="6_kn32d"]
 [ext_resource type="Script" path="res://Scripts/CameraShake.cs" id="7_71lp4"]
+[ext_resource type="Resource" uid="uid://bwp85dxf2jh2t" path="res://Notes/Quater.tres" id="7_qlr4a"]
+[ext_resource type="Resource" uid="uid://5w1tjverxqgv" path="res://Notes/Rest.tres" id="8_hwo7q"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_o03uw"]
 
@@ -18,7 +23,7 @@ script = ExtResource("1_wcb78")
 NoteSpawner = NodePath("NoteSpawner")
 NoteScene = ExtResource("2_bj77t")
 SpawnTime = 1.25
-NoteList = Array[Object]([ExtResource("3_u62y3"), ExtResource("4_lp1l0")])
+NoteList = Array[Object]([ExtResource("3_j11fc"), ExtResource("4_jlufs"), ExtResource("5_r8rk0"), ExtResource("6_5x55n"), ExtResource("7_qlr4a"), ExtResource("8_hwo7q"), ExtResource("3_u62y3"), ExtResource("4_lp1l0")])
 SongFilePath = "Songs/Testing.txt"
 bgShader = ExtResource("5_m0r1t")
 player = NodePath("Player")
@@ -32,7 +37,6 @@ metadata/_edit_group_ = true
 [node name="Player" parent="." instance=ExtResource("1_uoffo")]
 z_index = 1
 position = Vector2(75, -18)
-collision_layer = 1
 JumpVelocity = 500
 
 [node name="NoteSpawner" type="Node2D" parent="."]
@@ -70,7 +74,7 @@ position = Vector2(577, 270)
 metadata/_edit_lock_ = true
 
 [node name="TrackEnd" type="Area2D" parent="."]
-position = Vector2(53, 165)
+position = Vector2(-16, 165)
 collision_layer = 4
 collision_mask = 2
 metadata/_edit_group_ = true
@@ -100,19 +104,10 @@ metadata/_edit_lock_ = true
 [node name="StartPlatform" parent="." instance=ExtResource("4_63ud3")]
 position = Vector2(74, 185)
 
-[node name="Background" type="Sprite2D" parent="."]
-z_index = -2
-position = Vector2(-150, -54)
-scale = Vector2(1.32979, 1.39506)
-texture = ExtResource("5_pcw83")
-centered = false
-metadata/_edit_group_ = true
-
 [node name="BackgroundTracks" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.227451)
 z_index = -1
 material = ExtResource("5_m0r1t")
-position = Vector2(48, 0)
 texture = ExtResource("6_kn32d")
 centered = false
 metadata/_edit_group_ = true

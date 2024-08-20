@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Note" load_steps=5 format=3 uid="uid://crkg75g2mb7wn"]
+
+[ext_resource type="Script" path="res://Scripts/Note.cs" id="1_tkb0q"]
+[ext_resource type="AudioStream" uid="uid://bhblk7cuhmm3w" path="res://Assets/SFX/Xylophone.mp3" id="1_w7sfg"]
+[ext_resource type="Texture2D" uid="uid://bo7ujwmahlsvm" path="res://Assets/Art/Notes/Beam quaver.png" id="2_wi81k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r16ne"]
+size = Vector2(72.5003, 102.5)
+
+[resource]
+script = ExtResource("1_tkb0q")
+Symbol = "n"
+Texture = ExtResource("2_wi81k")
+Sound = ExtResource("1_w7sfg")
+Collision = SubResource("RectangleShape2D_r16ne")
+SpriteOffset = Vector2(-20, 5)
