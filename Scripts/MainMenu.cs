@@ -82,6 +82,7 @@ public partial class MainMenu : CanvasLayer
         Home.Visible = true;
         Settings.Visible = false;
         Help.Visible = false;
+        SongSelect.Visible = false;
         ((ShaderMaterial)Textures[4].Material).SetShaderParameter("isActive", true);
     }
 
