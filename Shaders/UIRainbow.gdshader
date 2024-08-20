@@ -1,6 +1,6 @@
 shader_type canvas_item;
 
-uniform bool isActive;
+uniform bool isActive = false;
 
 vec3 HSVtoRGB(float hue, float saturation, float vibrance)
 {

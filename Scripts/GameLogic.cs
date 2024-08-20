@@ -11,7 +11,6 @@ public partial class GameLogic : Node
     [Export] public PackedScene NoteScene;
     [Export] public double SpawnTime = 2;
     [Export] public Note[] NoteList;
-    [Export] string SongFilePath;
     [Export] ShaderMaterial bgShader;
     [Export] PlayerMovement player;
     Track[] noteTracks;
@@ -21,8 +20,8 @@ public partial class GameLogic : Node
     public override void _Ready()
     {
         // File Loading
-        SongFilePath = ProjectSettings.GlobalizePath("res://") + SongFilePath;
-        StreamReader reader = new StreamReader(SongFilePath);
+        StreamReader reader = new StreamReader(ProjectSettings.GlobalizePath("res://") + "Songs/" + GlobalSettings.instance.CurrentSongName + ".txt");
+        reader.ReadLine();
         int bpm = Convert.ToInt32(reader.ReadLine());
         // Track creation
         noteTracks = new Track[9];
@@ -42,7 +41,7 @@ public partial class GameLogic : Node
 
         if(songDone)
         {
-            if(GetNode("Notes").GetChildCount() == 0 && !AudioManager.instance.IsAudioPlaying()) GetTree().Quit();
+            if(GetNode("Notes").GetChildCount() == 0 && !AudioManager.instance.IsAudioPlaying()) GetTree().CallDeferred("change_scene_to_file", "res://Scenes/main_menu.tscn");
             return;
         }
 
@@ -72,6 +71,6 @@ public partial class GameLogic : Node
     }
     public void PlayerDies(Node2D body)
     {
-        GetTree().Quit();
+        GetTree().CallDeferred("change_scene_to_file", "res://Scenes/main_menu.tscn");
     }
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cftl8mrd8wyxi"]
+[gd_scene load_steps=20 format=3 uid="uid://cftl8mrd8wyxi"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.cs" id="1_hirlv"]
 [ext_resource type="Texture2D" uid="uid://dfi4yvd247gdw" path="res://Assets/Art/GameLogo.png" id="1_rcj6p"]
@@ -6,20 +6,50 @@
 [ext_resource type="Texture2D" uid="uid://c6oglrsa5yv7i" path="res://Assets/Art/SongsBtn.png" id="2_yojhn"]
 [ext_resource type="Shader" path="res://Shaders/UIRainbow.gdshader" id="2_yoobx"]
 [ext_resource type="FontFile" uid="uid://c6cqtkykb6epr" path="res://Assets/karmatic-arcade.regular.ttf" id="3_u5ckc"]
+[ext_resource type="Texture2D" uid="uid://b46dnv15ypetg" path="res://Assets/Art/MehIcon.png" id="4_af4id"]
 [ext_resource type="Texture2D" uid="uid://lcyckqw2b01p" path="res://Assets/Art/SettingsBtn.png" id="4_gcett"]
 [ext_resource type="Texture2D" uid="uid://70ohy0oeiwjx" path="res://Assets/Art/ControlsBtn.png" id="5_tjfcw"]
+[ext_resource type="Texture2D" uid="uid://bl16n7rnwoepw" path="res://Assets/Art/HardIcon.png" id="5_wdagd"]
 [ext_resource type="Texture2D" uid="uid://buhci4cw1bhsb" path="res://Assets/Art/QuitBtn.png" id="6_2w2er"]
+[ext_resource type="Texture2D" uid="uid://bmlmjv12gvyxk" path="res://Assets/Art/EasyIcon.png" id="11_5erqg"]
+[ext_resource type="Texture2D" uid="uid://pbjo1jx8anfb" path="res://Assets/Art/BackBtn.png" id="11_r0om3"]
+[ext_resource type="Texture2D" uid="uid://83fiaf2pcjla" path="res://Assets/Art/PlayBtn.png" id="12_eqyn8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rw7fx"]
 font = ExtResource("3_u5ckc")
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_ig4x0"]
+font = ExtResource("3_u5ckc")
 font_size = 20
 
-[node name="MainMenu" type="CanvasLayer" node_paths=PackedStringArray("Buttons", "Textures", "Labels")]
+[sub_resource type="LabelSettings" id="LabelSettings_y2n0u"]
+font = ExtResource("3_u5ckc")
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_em641"]
+font = ExtResource("3_u5ckc")
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_3nfcc"]
+font = ExtResource("3_u5ckc")
+font_size = 20
+
+[node name="MainMenu" type="CanvasLayer" node_paths=PackedStringArray("Buttons", "Textures", "Labels", "Home", "Settings", "Help", "SongSelect", "SongDisplayTemplate", "SongList")]
 script = ExtResource("1_hirlv")
-Buttons = [NodePath("Buttons/VBoxContainer/Songs"), NodePath("Buttons/VBoxContainer/Settings"), NodePath("Buttons/VBoxContainer/Help"), NodePath("Buttons/VBoxContainer/Quit")]
-Textures = [NodePath("Buttons/VBoxContainer/Songs/Btn"), NodePath("Buttons/VBoxContainer/Settings/Btn"), NodePath("Buttons/VBoxContainer/Help/Btn"), NodePath("Buttons/VBoxContainer/Quit/Btn")]
-Labels = [NodePath("Buttons/VBoxContainer/Songs/Lbl"), NodePath("Buttons/VBoxContainer/Settings/Lbl"), NodePath("Buttons/VBoxContainer/Help/Lbl"), NodePath("Buttons/VBoxContainer/Quit/Lbl")]
+Buttons = [NodePath("Buttons/Songs"), NodePath("Buttons/Settings"), NodePath("Buttons/Help"), NodePath("Buttons/Quit"), NodePath("Settings/ScreenShake"), NodePath("Help/Back"), NodePath("Settings/Back"), NodePath("Songs/Back")]
+Textures = [NodePath("Buttons/Songs/Btn"), NodePath("Buttons/Settings/Btn"), NodePath("Buttons/Help/Btn"), NodePath("Buttons/Quit/Btn"), NodePath("Settings/ScreenShake/Btn"), NodePath("Help/Back/Btn"), NodePath("Settings/Back/Btn"), NodePath("Songs/Back/Btn")]
+Labels = [NodePath("Buttons/Songs/Lbl"), NodePath("Buttons/Settings/Lbl"), NodePath("Buttons/Help/Lbl"), NodePath("Buttons/Quit/Lbl"), NodePath("Settings/ScreenShake/Lbl"), NodePath("Help/Back/Lbl"), NodePath("Settings/Back/Lbl"), NodePath("Songs/Back/Lbl")]
 HoveringShader = ExtResource("2_yoobx")
+Home = NodePath("Buttons")
+Settings = NodePath("Settings")
+Help = NodePath("Help")
+SongSelect = NodePath("Songs")
+SongDisplayTemplate = NodePath("Songs/SongScroll/SongList/Songtemplate")
+EasyTexture = ExtResource("11_5erqg")
+MehTexture = ExtResource("4_af4id")
+HardTexture = ExtResource("5_wdagd")
+SongList = NodePath("Songs/SongScroll/SongList")
 
 [node name="Logo" type="Control" parent="."]
 layout_mode = 3
@@ -53,13 +83,195 @@ size_flags_vertical = 6
 texture = ExtResource("1_rcj6p")
 expand_mode = 1
 
-[node name="Buttons" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 8
+[node name="Buttons" type="VBoxContainer" parent="."]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -215.0
+offset_top = 304.0
+offset_right = 215.0
+offset_bottom = 572.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="Songs" type="HBoxContainer" parent="Buttons"]
+material = ExtResource("2_1i474")
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_stretch_ratio = 0.0
+
+[node name="Btn" type="TextureButton" parent="Buttons/Songs"]
+material = ExtResource("2_1i474")
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("2_yojhn")
+stretch_mode = 5
+
+[node name="Lbl" type="Label" parent="Buttons/Songs"]
+visible = false
+material = ExtResource("2_1i474")
+layout_mode = 2
+text = "SONGS"
+label_settings = SubResource("LabelSettings_rw7fx")
+
+[node name="Settings" type="HBoxContainer" parent="Buttons"]
+material = ExtResource("2_1i474")
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Btn" type="TextureButton" parent="Buttons/Settings"]
+material = ExtResource("2_1i474")
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("4_gcett")
+stretch_mode = 5
+
+[node name="Lbl" type="Label" parent="Buttons/Settings"]
+visible = false
+material = ExtResource("2_1i474")
+layout_mode = 2
+text = "SETTINGS"
+label_settings = SubResource("LabelSettings_rw7fx")
+
+[node name="Help" type="HBoxContainer" parent="Buttons"]
+material = ExtResource("2_1i474")
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Btn" type="TextureButton" parent="Buttons/Help"]
+material = ExtResource("2_1i474")
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("5_tjfcw")
+stretch_mode = 5
+
+[node name="Lbl" type="Label" parent="Buttons/Help"]
+visible = false
+material = ExtResource("2_1i474")
+layout_mode = 2
+text = "HOW 2 PLAY"
+label_settings = SubResource("LabelSettings_rw7fx")
+
+[node name="Quit" type="HBoxContainer" parent="Buttons"]
+material = ExtResource("2_1i474")
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Btn" type="TextureButton" parent="Buttons/Quit"]
+material = ExtResource("2_1i474")
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("6_2w2er")
+stretch_mode = 5
+
+[node name="Lbl" type="Label" parent="Buttons/Quit"]
+visible = false
+material = ExtResource("2_1i474")
+layout_mode = 2
+text = "QUIT
+"
+label_settings = SubResource("LabelSettings_rw7fx")
+
+[node name="Settings" type="VBoxContainer" parent="."]
+visible = false
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.6
+anchor_right = 0.75
+anchor_bottom = 0.9
+offset_left = -195.0
+offset_top = -46.0
+offset_right = 195.0
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 200
+
+[node name="ScreenShake" type="HBoxContainer" parent="Settings"]
+layout_mode = 2
+
+[node name="Lbl" type="Label" parent="Settings/ScreenShake"]
+layout_mode = 2
+text = "SCREEN SHAKE ENABLED
+"
+label_settings = SubResource("LabelSettings_ig4x0")
+
+[node name="Btn" type="CheckButton" parent="Settings/ScreenShake"]
+layout_mode = 2
+button_pressed = true
+
+[node name="Back" type="HBoxContainer" parent="Settings"]
+layout_mode = 2
+
+[node name="Btn" type="TextureButton" parent="Settings/Back"]
+material = ExtResource("2_1i474")
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("11_r0om3")
+stretch_mode = 5
+
+[node name="Lbl" type="Label" parent="Settings/Back"]
+layout_mode = 2
+text = "BACK
+"
+label_settings = SubResource("LabelSettings_ig4x0")
+
+[node name="Help" type="VBoxContainer" parent="."]
+visible = false
+anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 0.9
+offset_left = -69.5
+offset_top = -45.5
+offset_right = 69.5
+offset_bottom = 45.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Help"]
+layout_mode = 2
+text = "HOW TO PLAY:
+
+PRESS SPACE OR MOUSE LEFT CLICK TO JUMP
+YOU CAN DOUBLE JUMP ONCE IN MIDAIR
+
+WHEN THE SONG LOADS YOU HAVE ONE FREE JUMP SO DON'T WASTE IT BEFORE NOTES
+BEGIN SPAWNING
+
+STAY ON THE NOTES TO KEEP THE HARMONY GOING
+
+MADE BY CHILLPILL FOR GMTK GAME JAM 2024
+"
+label_settings = SubResource("LabelSettings_y2n0u")
+horizontal_alignment = 1
+
+[node name="Back" type="HBoxContainer" parent="Help"]
+layout_mode = 2
+
+[node name="Btn" type="TextureButton" parent="Help/Back"]
+material = ExtResource("2_1i474")
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("11_r0om3")
+stretch_mode = 5
+
+[node name="Lbl" type="Label" parent="Help/Back"]
+layout_mode = 2
+text = "BACK
+"
+label_settings = SubResource("LabelSettings_ig4x0")
+
+[node name="Songs" type="VBoxContainer" parent="."]
+visible = false
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.5
+anchor_right = 0.9
+anchor_bottom = 0.9
 offset_left = -20.0
 offset_top = -20.0
 offset_right = 20.0
@@ -67,80 +279,65 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Buttons"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -229.0
-offset_right = 229.0
-offset_bottom = 188.0
-grow_horizontal = 2
+[node name="SongScroll" type="ScrollContainer" parent="Songs"]
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+
+[node name="SongList" type="VBoxContainer" parent="Songs/SongScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Songtemplate" type="HBoxContainer" parent="Songs/SongScroll/SongList"]
+layout_mode = 2
+theme_override_constants/separation = 50
 alignment = 1
 
-[node name="Songs" type="HBoxContainer" parent="Buttons/VBoxContainer"]
-material = ExtResource("2_1i474")
+[node name="Texture" type="TextureRect" parent="Songs/SongScroll/SongList/Songtemplate"]
+modulate = Color(0.66, 0, 0, 1)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_stretch_ratio = 0.0
+texture = ExtResource("5_wdagd")
 
-[node name="Btn" type="TextureButton" parent="Buttons/VBoxContainer/Songs"]
-material = ExtResource("2_1i474")
+[node name="Name" type="Label" parent="Songs/SongScroll/SongList/Songtemplate"]
 layout_mode = 2
-texture_normal = ExtResource("2_yojhn")
+text = "SONG NAME"
+label_settings = SubResource("LabelSettings_em641")
 
-[node name="Lbl" type="Label" parent="Buttons/VBoxContainer/Songs"]
-material = ExtResource("2_1i474")
+[node name="Duration" type="Label" parent="Songs/SongScroll/SongList/Songtemplate"]
 layout_mode = 2
-text = "SONGS"
-label_settings = SubResource("LabelSettings_rw7fx")
+text = "2.34"
+label_settings = SubResource("LabelSettings_3nfcc")
 
-[node name="Settings" type="HBoxContainer" parent="Buttons/VBoxContainer"]
-material = ExtResource("2_1i474")
+[node name="Btn" type="TextureButton" parent="Songs/SongScroll/SongList/Songtemplate"]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-size_flags_horizontal = 4
+texture_normal = ExtResource("12_eqyn8")
+stretch_mode = 5
 
-[node name="Btn" type="TextureButton" parent="Buttons/VBoxContainer/Settings"]
-material = ExtResource("2_1i474")
+[node name="Back" type="HBoxContainer" parent="Songs"]
 layout_mode = 2
-texture_normal = ExtResource("4_gcett")
 
-[node name="Lbl" type="Label" parent="Buttons/VBoxContainer/Settings"]
+[node name="Btn" type="TextureButton" parent="Songs/Back"]
 material = ExtResource("2_1i474")
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-text = "SETTINGS"
-label_settings = SubResource("LabelSettings_rw7fx")
+texture_normal = ExtResource("11_r0om3")
+stretch_mode = 5
 
-[node name="Help" type="HBoxContainer" parent="Buttons/VBoxContainer"]
-material = ExtResource("2_1i474")
+[node name="Lbl" type="Label" parent="Songs/Back"]
+visible = false
 layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="Btn" type="TextureButton" parent="Buttons/VBoxContainer/Help"]
-material = ExtResource("2_1i474")
-layout_mode = 2
-texture_normal = ExtResource("5_tjfcw")
-
-[node name="Lbl" type="Label" parent="Buttons/VBoxContainer/Help"]
-material = ExtResource("2_1i474")
-layout_mode = 2
-text = "controls
+text = "BACK
 "
-label_settings = SubResource("LabelSettings_rw7fx")
+label_settings = SubResource("LabelSettings_ig4x0")
 
-[node name="Quit" type="HBoxContainer" parent="Buttons/VBoxContainer"]
-material = ExtResource("2_1i474")
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="Btn" type="TextureButton" parent="Buttons/VBoxContainer/Quit"]
-material = ExtResource("2_1i474")
-layout_mode = 2
-texture_normal = ExtResource("6_2w2er")
-
-[node name="Lbl" type="Label" parent="Buttons/VBoxContainer/Quit"]
-material = ExtResource("2_1i474")
-layout_mode = 2
-text = "QUIT
-"
-label_settings = SubResource("LabelSettings_rw7fx")
+[connection signal="pressed" from="Buttons/Songs/Btn" to="." method="SongButtonClicked"]
+[connection signal="pressed" from="Buttons/Settings/Btn" to="." method="SettingsButtonClicked"]
+[connection signal="pressed" from="Buttons/Help/Btn" to="." method="HelpButtonClicked"]
+[connection signal="pressed" from="Buttons/Quit/Btn" to="." method="QuitGameClicked"]
+[connection signal="toggled" from="Settings/ScreenShake/Btn" to="." method="ScreenShakeChanged"]
+[connection signal="pressed" from="Settings/Back/Btn" to="." method="BackButtonClicked"]
+[connection signal="pressed" from="Help/Back/Btn" to="." method="BackButtonClicked"]
+[connection signal="pressed" from="Songs/Back/Btn" to="." method="BackButtonClicked"]

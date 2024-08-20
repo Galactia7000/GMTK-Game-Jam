@@ -23,7 +23,7 @@ public partial class CameraShake : Camera2D
 
     void Shake(float strength)
     {
-        shakeStrength = strength;
+        if (GlobalSettings.instance.ScreenShakeEnabled) shakeStrength = strength;
     }
     Vector2 RandomOffset() => new Vector2(RandomFloat(-shakeStrength, shakeStrength),RandomFloat(-shakeStrength, shakeStrength));
     float RandomFloat(float min, float max) => RNG.NextSingle() * (max - min) + min;

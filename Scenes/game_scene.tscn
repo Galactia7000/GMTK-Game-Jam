@@ -24,7 +24,6 @@ NoteSpawner = NodePath("NoteSpawner")
 NoteScene = ExtResource("2_bj77t")
 SpawnTime = 1.25
 NoteList = Array[Object]([ExtResource("3_j11fc"), ExtResource("4_jlufs"), ExtResource("5_r8rk0"), ExtResource("6_5x55n"), ExtResource("7_qlr4a"), ExtResource("8_hwo7q"), ExtResource("3_u62y3"), ExtResource("4_lp1l0")])
-SongFilePath = "Songs/Testing.txt"
 bgShader = ExtResource("5_m0r1t")
 player = NodePath("Player")
 
